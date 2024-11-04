@@ -1,5 +1,5 @@
 using System.Reflection;
-using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Mvc;
 using ReadIt.Models.Reddit;
 using ReadIt.Repositories;
 using ReadIt.Services;
@@ -29,8 +29,10 @@ builder.Services.Configure<RedditOptions>(builder.Configuration.GetSection(Reddi
 // here. We have the added benefit of being able to write different repositories to different persistance
 // layers (e.g. - SQL, json, in-memory, etc.)
 builder.Services.AddSingleton<IRepository<PostDetails>, InMemoryRepository<PostDetails>>();
-builder.Services.AddSingleton<IRepository<RedditUser>, InMemoryRepository<RedditUser>>();
+builder.Services.AddSingleton<IRepository<ActiveRedditUser>, InMemoryRepository<ActiveRedditUser>>();
 builder.Services.AddSingleton<IBackgroundTaskWorker, RedditPostRetrievalBackgroundTask>();
+builder.Services.AddSingleton<IPaginate<PostDetails>, PostRepository>();
+builder.Services.AddSingleton<IPaginate<ActiveRedditUser>, UserRepository>();
 
 // Add the ability to allow future expansion of post sources. Right now, this is limited to Reddit
 // but the future could also use twitter or facebook... as a post source
@@ -50,12 +52,21 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// TODO: For a project with more endpoints, move these out of the program.cs file and into their own area. 
 app
-    .MapGet("/posts", () => { })
+    .MapGet("/posts", ([FromServices] IPaginate<PostDetails> repo, [FromQuery] int pageNumber, [FromQuery] int resultsPerPage) =>
+    {
+        return repo.GetPaginatedList(pageNumber, resultsPerPage);
+    })
     .WithName("GetPosts")
     .WithOpenApi();
+
+
 app
-    .MapGet("/users", () => { })
+    .MapGet("/users", ([FromServices] IPaginate<ActiveRedditUser> repo, [FromQuery] int pageNumber, [FromQuery] int resultsPerPage) =>
+    {
+        return repo.GetPaginatedList(pageNumber, resultsPerPage);
+    })
     .WithName("GetUsers")
     .WithOpenApi();
 

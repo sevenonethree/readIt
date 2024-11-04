@@ -29,8 +29,8 @@ public class RedditTests
 
         var actual = await sut.GetRedditPostsAsync("localTest", "");
 
-        actual.ListingInfo.Posts.Any().Should().BeTrue();
-        actual.ListingInfo.Posts.All(post => post.Details != null && !string.IsNullOrEmpty(post.Details.Id)).Should().BeTrue();
+        actual?.ListingInfo?.Posts?.Any().Should().BeTrue();
+        actual?.ListingInfo?.Posts?.All(post => post.Details != null && !string.IsNullOrEmpty(post.Details.Id)).Should().BeTrue();
     }
 }
 

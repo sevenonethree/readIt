@@ -1,4 +1,3 @@
-// Root myDeserializedClass = JsonSerializer.Deserialize<Root>(myJsonResponse);
 using System.Text.Json.Serialization;
 using ReadIt.Models;
 
@@ -69,3 +68,9 @@ public record RedditUser : IRepositoryItem
     public required string Id { get; set; }
 }
 
+public record ActiveRedditUser : IRepositoryItem
+{
+    public required string UserName { get; set; }
+    public int PostCount { get; set; }
+    public string Id { get; set; }
+}

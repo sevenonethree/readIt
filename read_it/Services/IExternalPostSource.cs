@@ -1,3 +1,5 @@
+using ReadIt.Models;
+
 namespace ReadIt.Services;
 
 // no longer used... Decided I only really need the paginated source
@@ -10,16 +12,4 @@ public interface IExternalPostSource<T>
 public interface IPaginatedPostSource<T>
 {
     Task<T> GetNextPage(PaginatedApiMetaData metadata);
-}
-
-public record ApiMetadata
-{
-    public required string Category { get; init; }
-}
-
-public record PaginatedApiMetaData : ApiMetadata
-{
-    public string PreviousPageId { get; init; } = string.Empty;
-    public string NextPageId { get; init; } = string.Empty;
-
 }

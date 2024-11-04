@@ -2,6 +2,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using Microsoft.Extensions.Options;
+using ReadIt.Models;
 using ReadIt.Models.Reddit;
 using Polly;
 using Polly.RateLimit;
@@ -69,18 +70,34 @@ public class RedditApi : IPaginatedPostSource<RedditResponse?>
 
     public async Task<RedditResponse?> GetRedditPostsAsync(string subReddit, string after = "")
     {
-        if (string.IsNullOrEmpty(subReddit)) throw new ArgumentException("Argument subReddit is required");
+        try
+        {
+            if (string.IsNullOrEmpty(subReddit)) throw new ArgumentException("Argument subReddit is required");
 
-        if (_authorization == null || DateTime.UtcNow > _authorization?.ExpiresAt)
-            _authorization = await Authorize();
+            if (_authorization == null || DateTime.UtcNow > _authorization?.ExpiresAt)
+                _authorization = await Authorize();
 
-        var request = BuildBasePostsRequestMessage();
-        request.RequestUri = new Uri($"{_redditOptions.BaseUrl}/r/{subReddit}/top?t=all&limit=100{(string.IsNullOrEmpty(after) ? "" : $"&after={after}")}");
+            var request = BuildBasePostsRequestMessage();
+            request.RequestUri = new Uri($"{_redditOptions.BaseUrl}/r/{subReddit}/top?t=all&limit=100{(string.IsNullOrEmpty(after) ? "" : $"&after={after}")}");
 
-        using var response = SendHttpMessage(request);
-        response.EnsureSuccessStatusCode();
-        
-        return await response.Content.ReadFromJsonAsync<RedditResponse>();
+            using var response = SendHttpMessage(request);
+            response.EnsureSuccessStatusCode();
+
+            return await response.Content.ReadFromJsonAsync<RedditResponse>();
+        }
+        catch (Exception ex)
+        {
+            // TODO: There should be more robust error handling here. 
+            // Adding it at this level as there is probably something specific you would want to do for each 
+            // post source.
+            Log.Error(ex, "An exception occurred when attempting to process posts from Reddit in {methodName}", new { methodName = nameof(GetRedditPostsAsync) });
+        }
+
+        return new RedditResponse()
+        {
+            Kind = "Error",
+            ListingInfo = new()
+        };
     }
 
 
