@@ -1,0 +1,170 @@
+{
+	"kind": "Listing",
+	"data": {
+		"after": "t3_kt785i",
+		"dist": 1,
+		"modhash": "",
+		"geo_filter": "",
+		"children": [
+			{
+				"kind": "t3",
+				"data": {
+					"approved_at_utc": null,
+					"subreddit": "technology",
+					"selftext": "",
+					"author_fullname": "t2_123jub",
+					"saved": false,
+					"mod_reason_title": null,
+					"gilded": 6,
+					"clicked": false,
+					"title": "Reddit bans subreddit group \"r/DonaldTrump\"",
+					"link_flair_richtext": [],
+					"subreddit_name_prefixed": "r/technology",
+					"hidden": false,
+					"pwls": 6,
+					"link_flair_css_class": "general",
+					"downs": 0,
+					"thumbnail_height": 78,
+					"top_awarded_type": null,
+					"hide_score": false,
+					"name": "t3_kt785i",
+					"quarantine": false,
+					"link_flair_text_color": "dark",
+					"upvote_ratio": 0.76,
+					"author_flair_background_color": null,
+					"ups": 147262,
+					"total_awards_received": 0,
+					"media_embed": {},
+					"thumbnail_width": 140,
+					"author_flair_template_id": null,
+					"is_original_content": false,
+					"user_reports": [],
+					"secure_media": null,
+					"is_reddit_media_domain": false,
+					"is_meta": false,
+					"category": null,
+					"secure_media_embed": {},
+					"link_flair_text": "Social Media",
+					"can_mod_post": false,
+					"score": 147262,
+					"approved_by": null,
+					"is_created_from_ads_ui": false,
+					"author_premium": false,
+					"thumbnail": "https://b.thumbs.redditmedia.com/B09y77DITWLrY6zvJMtswql_F9io41e1YhkPw_Tj8lQ.jpg",
+					"edited": false,
+					"author_flair_css_class": null,
+					"author_flair_richtext": [],
+					"gildings": {},
+					"post_hint": "link",
+					"content_categories": null,
+					"is_self": false,
+					"subreddit_type": "public",
+					"created": 1610127075.0,
+					"link_flair_type": "text",
+					"wls": 6,
+					"removed_by_category": null,
+					"banned_by": null,
+					"author_flair_type": "text",
+					"domain": "axios.com",
+					"allow_live_comments": true,
+					"selftext_html": null,
+					"likes": null,
+					"suggested_sort": null,
+					"banned_at_utc": null,
+					"url_overridden_by_dest": "https://www.axios.com/reddit-bans-rdonaldtrump-subreddit-ff1da2de-37ab-49cf-afbd-2012f806959e.html",
+					"view_count": null,
+					"archived": true,
+					"no_follow": false,
+					"is_crosspostable": false,
+					"pinned": false,
+					"over_18": false,
+					"preview": {
+						"images": [
+							{
+								"source": {
+									"url": "https://external-preview.redd.it/dE4R-RzdHIBOGZ4nSXLlUyXa1sR88VlPlAjVLzoKass.jpg?auto=webp&amp;s=f43f10d9f207b0eaa2263e62e9c54cef21b244f2",
+									"width": 1366,
+									"height": 768
+								},
+								"resolutions": [
+									{
+										"url": "https://external-preview.redd.it/dE4R-RzdHIBOGZ4nSXLlUyXa1sR88VlPlAjVLzoKass.jpg?width=108&amp;crop=smart&amp;auto=webp&amp;s=0f64abd8ced7b97a1a95dc3a085617d475bc20c9",
+										"width": 108,
+										"height": 60
+									},
+									{
+										"url": "https://external-preview.redd.it/dE4R-RzdHIBOGZ4nSXLlUyXa1sR88VlPlAjVLzoKass.jpg?width=216&amp;crop=smart&amp;auto=webp&amp;s=85bf4b568d18d16a373c22318758cd493176be37",
+										"width": 216,
+										"height": 121
+									},
+									{
+										"url": "https://external-preview.redd.it/dE4R-RzdHIBOGZ4nSXLlUyXa1sR88VlPlAjVLzoKass.jpg?width=320&amp;crop=smart&amp;auto=webp&amp;s=e95a4e1198bcc212dc60b96909802051e95cd329",
+										"width": 320,
+										"height": 179
+									},
+									{
+										"url": "https://external-preview.redd.it/dE4R-RzdHIBOGZ4nSXLlUyXa1sR88VlPlAjVLzoKass.jpg?width=640&amp;crop=smart&amp;auto=webp&amp;s=f7211cfc53640eb9e4cba98110b79b3455b1116b",
+										"width": 640,
+										"height": 359
+									},
+									{
+										"url": "https://external-preview.redd.it/dE4R-RzdHIBOGZ4nSXLlUyXa1sR88VlPlAjVLzoKass.jpg?width=960&amp;crop=smart&amp;auto=webp&amp;s=8f74a57756cc555b6943129734f528c239b720a1",
+										"width": 960,
+										"height": 539
+									},
+									{
+										"url": "https://external-preview.redd.it/dE4R-RzdHIBOGZ4nSXLlUyXa1sR88VlPlAjVLzoKass.jpg?width=1080&amp;crop=smart&amp;auto=webp&amp;s=6f9ea0125185f9b8aab7ff35a80882174365bf55",
+										"width": 1080,
+										"height": 607
+									}
+								],
+								"variants": {},
+								"id": "3Xf6QcS5Xdg3rbd6PkMXn_4jkBL_par5nqVhRC377Sc"
+							}
+						],
+						"enabled": false
+					},
+					"all_awardings": [],
+					"awarders": [],
+					"media_only": false,
+					"link_flair_template_id": "7d4d8376-a816-11e9-a92d-0e6b9fa95170",
+					"can_gild": false,
+					"spoiler": false,
+					"locked": false,
+					"author_flair_text": null,
+					"treatment_tags": [],
+					"visited": false,
+					"removed_by": null,
+					"mod_note": null,
+					"distinguished": null,
+					"subreddit_id": "t5_2qh16",
+					"author_is_blocked": false,
+					"mod_reason_by": null,
+					"num_reports": null,
+					"removal_reason": null,
+					"link_flair_background_color": "",
+					"id": "kt785i",
+					"is_robot_indexable": true,
+					"report_reasons": null,
+					"author": "Ketsetri",
+					"discussion_type": null,
+					"num_comments": 10299,
+					"send_replies": true,
+					"contest_mode": false,
+					"mod_reports": [],
+					"author_patreon_flair": false,
+					"author_flair_text_color": null,
+					"permalink": "/r/technology/comments/kt785i/reddit_bans_subreddit_group_rdonaldtrump/",
+					"stickied": false,
+					"url": "https://www.axios.com/reddit-bans-rdonaldtrump-subreddit-ff1da2de-37ab-49cf-afbd-2012f806959e.html",
+					"subreddit_subscribers": 17352713,
+					"created_utc": 1610127075.0,
+					"num_crossposts": 30,
+					"media": null,
+					"is_video": false
+				}
+			}
+		],
+		"before": null
+	}
+}
