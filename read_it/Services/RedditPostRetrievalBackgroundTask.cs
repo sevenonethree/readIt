@@ -8,7 +8,7 @@ namespace ReadIt.Services;
 
 public interface IBackgroundTaskWorker
 {
-    void Execute();
+    void Execute(CancellationToken cancellationToken);
 }
 public class RedditPostRetrievalBackgroundTask : IBackgroundTaskWorker
 {
@@ -32,15 +32,15 @@ public class RedditPostRetrievalBackgroundTask : IBackgroundTaskWorker
     }
 
     // TODO: Add a way to cancel this request. As it stands, it cannot be tested in a meaningful way.
-    public void Execute()
+    public void Execute(CancellationToken cancellationToken)
     {
-        while (true)
+        while (!cancellationToken.IsCancellationRequested)
         {
-            try
-            {
-                _redditSettings.SubReddits
-                    .ToList()
-                    .ForEach(async subReddit =>
+            _redditSettings.SubReddits
+                .ToList()
+                .ForEach(async subReddit =>
+                {
+                    try
                     {
                         if (!nextPageDictionary.ContainsKey(subReddit))
                         {
@@ -51,11 +51,11 @@ public class RedditPostRetrievalBackgroundTask : IBackgroundTaskWorker
 
                         // TODO: Highly inefficient. Need to add a way to save a list of post details
                         response?.ListingInfo?.Posts
-                            ?.ToList()
-                            .ForEach(post =>
-                            {
-                                _postRepository.Save(post.Details);
-                            });
+                                ?.ToList()
+                                .ForEach(post =>
+                                {
+                                    _postRepository.Save(post.Details);
+                                });
 
                         nextPageDictionary[subReddit] = new PaginatedApiMetaData()
                         {
@@ -63,19 +63,19 @@ public class RedditPostRetrievalBackgroundTask : IBackgroundTaskWorker
                             NextPageId = response?.ListingInfo.NextPage ?? string.Empty,
                             PreviousPageId = response?.ListingInfo.PreviousPage ?? string.Empty
                         };
-                    });
-            }
-            catch (Exception ex)
-            {
-                // TODO: Handle any errors that make sense here, or possibly stop the background retrieval to 
-                // save on rate limit/money. 
-                // There should DEFINITELY be some means of notifying people if the background process is stopped.
-                Log.Error(
-                    ex,
-                    "An unexpected error occurred in RedditPostRetrievalBackgroundTask.{methodName}. The message was: {Message}",
-                    new { methodName = nameof(Execute), ex.Message }
-                );
-            }
+                    }
+                    catch (Exception ex)
+                    {
+                        // TODO: Handle any errors that make sense here, or possibly stop the background retrieval to 
+                        // save on rate limit/money. 
+                        // There should DEFINITELY be some means of notifying people if the background process is stopped.
+                        Log.Error(
+                                ex,
+                                "An unexpected error occurred in RedditPostRetrievalBackgroundTask.{methodName}. The message was: {Message}",
+                                new { methodName = nameof(Execute), ex.Message }
+                            );
+                    }
+                });
         }
     }
 
@@ -84,7 +84,7 @@ public class RedditPostRetrievalBackgroundTask : IBackgroundTaskWorker
     // not sure if it fully makes sense here.
     public Task ExecuteAsync()
     {
-        Execute();
+        Execute(CancellationToken.None);
         return Task.FromResult(true);
     }
 }

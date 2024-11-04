@@ -76,6 +76,6 @@ app
 var redditPostRetrieval = app.Services.GetRequiredService<IBackgroundTaskWorker>();
 
 // This should always be running in the background, so I am not awaiting this.
-_ = Task.Run(redditPostRetrieval.Execute);
+_ = Task.Run(() => redditPostRetrieval.Execute(CancellationToken.None));
 
 app.Run();

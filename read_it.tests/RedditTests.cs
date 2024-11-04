@@ -2,7 +2,8 @@ using System.Net.Http.Json;
 using Microsoft.Extensions.Options;
 using ReadIt.Models.Reddit;
 using ReadIt.Services;
-namespace ReadIt.tests;
+
+namespace ReadIt.Tests;
 
 public class RedditTests
 {
