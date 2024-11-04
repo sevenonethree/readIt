@@ -1,0 +1,16 @@
+services:
+  read-it-runner:
+    image: mcr.microsoft.com/dotnet/sdk:8.0
+    ports: 
+      - 5216:5216
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5216
+    volumes:
+      - ./read_it:/app
+    command: 
+      - sh
+      - -c
+      - |
+        cd /app
+        dotnet run --no-launch-profile read_it.csproj
